@@ -97,3 +97,12 @@ console.log(j.toJSON()); // {a:{a:11}}
 
 ###isEmpty()
 判断内部构建对象是否包含值
+
+###empty()
+清空对象
+
+###store(storage, key)
+将对象存储在指定的 Storage（localStorage/sessionStorage） 中
+
+###unstore()
+将存储的对象从 Storage 中移除
