@@ -163,7 +163,7 @@ describe('json param is an object value', function () {
 
 			j.store(localStorage, key);
 			expect(localStorage.getItem(key)).to.equal(JSON.stringify({a:1}));
-			localStorage.removeItem(key);
+			// localStorage.removeItem(key);
 		});
 		it('store json to sessionStorage', function () {
 			var j = J({a:1});
@@ -171,7 +171,26 @@ describe('json param is an object value', function () {
 
 			j.store(sessionStorage, key);
 			expect(sessionStorage.getItem(key)).to.equal(JSON.stringify({a:1}));
-			sessionStorage.removeItem(key);
+			// sessionStorage.removeItem(key);
+		});
+	});
+
+	describe('#unstore', function () {
+		it('unstore json to localStorage', function () {
+			var j = J({a:1});
+			var key = '__' + Date.now() + '__';
+
+			j.store(localStorage, key);
+			j.unstore(key);
+			expect(localStorage.getItem(key)).to.equal(null);
+		});
+		it('unstore json to sessionStorage', function () {
+			var j = J({a:1});
+			var key = '__' + Date.now() + '__';
+
+			j.store(sessionStorage, key);
+			j.unstore(key);
+			expect(sessionStorage.getItem(key)).to.equal(null);
 		});
 	});
 });
